@@ -3,7 +3,7 @@ const ProductsBusiness = require("./products-business");
 const ProductsRequests = {
   list: async (req, res, next) => {
     try {
-      const response = {'message':'response list'}
+      const response = await new ProductsBusiness().list(req.query);
       res.json(response);
     } catch (error) {
       return next(error);
@@ -12,7 +12,7 @@ const ProductsRequests = {
   create: async (req, res, next) => {
     try {
       const rowData = req.body;
-      const response = {'message':'response create'}
+      const response = await new ProductsBusiness().create(rowData);
       res.send(response);
     } catch (error) {
       return next(error);
@@ -22,7 +22,7 @@ const ProductsRequests = {
     try {
       const rowData = req.body;
       const rowId = req.params.id;
-      const response = {'message':'response update'}
+      const response = await new ProductsBusiness().update(rowId, rowData);
       res.status(200).send(response);
     } catch (error) {
       return next(error);
@@ -31,7 +31,7 @@ const ProductsRequests = {
   remove: async (req, res, next) => {
     try {
       const rowId = req.params.id;
-      const response = {'message':'response remove'}
+      const response = await new ProductsBusiness().remove(rowId);
       res.status(200).send(response);
     } catch (error) {
       return next(error);
@@ -40,7 +40,7 @@ const ProductsRequests = {
   delete: async (req, res, next) => {
     try {
       const rowId = req.params.id;
-      const response = {'message':'response delete'}
+      const response = await new ProductsBusiness().delete(rowId);
       res.status(200).send(response);
     } catch (error) {
       return next(error);
@@ -49,7 +49,7 @@ const ProductsRequests = {
   getById: async (req, res, next) => {
     try {
       const id = req.params.id;
-      const response = {'message':'response get by id'}
+      const response = await new ProductsBusiness().getById(id);
       res.status(200).send(response);
     } catch (error) {
       return next(error);
