@@ -4,7 +4,7 @@ services:
     image: node:lts-slim
     container_name: node
     working_dir: /home/node/app/
-    command: bash -c "npm ci && npm start"
+    command: bash -c "npm i && npm start"
     ports:
       - 3210:3210
     volumes:
