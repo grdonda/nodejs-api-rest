@@ -1,7 +1,8 @@
 const ProductsServices = require("./products-services");
 
 class ProductsBusiness {
-  async list(queryParams) {
+  async list(requestData) {
+    const queryParams = requestData.query;
     if (queryParams.page && queryParams.limit) {
       return new ProductsServices().listPaginated(queryParams.page, queryParams.limit);
     }
