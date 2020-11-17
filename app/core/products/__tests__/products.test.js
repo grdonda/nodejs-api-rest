@@ -27,3 +27,31 @@ describe("GET /products", () => {
     expect(res.status).toBe(200);
   });
 });
+
+describe("POST /products", () => {
+  it("should to create product", async () => {
+    const userMock = {
+      code: "test-12345",
+      name: "Product test",
+    };
+    const res = await request.post("/products").send(userMock);
+    expect(res.statusCode).toBe(200);
+  });
+});
+
+describe("PUT /products", () => {
+  it("should to update product", async () => {
+    const productId = "5fb288ad93c8bd50ec5c1e95";
+    const res = await request.put(`/products/${productId}`);
+    const userMock = {
+      code: "test-12345",
+      name: "Product test updated",
+    };
+    expect(res.statusCode).toBe(200);
+  });
+});
+
+describe("DELETE /products", () => {
+  it("should be to delete user from database test", async () => {});
+  it("should be to remove user setting flag removed", async () => {});
+});
