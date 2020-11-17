@@ -3,7 +3,7 @@ const ProductsBusiness = require("./products-business");
 const ProductsRequests = {
   list: async (req, res, next) => {
     try {
-      const response = await new ProductsBusiness().list(req.query);
+      const response = await new ProductsBusiness().list(req);
       res.json(response);
     } catch (error) {
       return next(error);

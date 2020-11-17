@@ -7,6 +7,7 @@ class ProductsRepository {
   async listPaginated(page, limit) {
     const pageTotal = page * 1 || 0;
     const limitTotal = limit * 1 || 2;
+
     return Products.find({ removed: { $eq: false } })
       .skip(limitTotal * pageTotal)
       .limit(limitTotal);
